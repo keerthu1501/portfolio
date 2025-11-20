@@ -131,7 +131,7 @@ export default function Home() {
                 marginBottom: "2rem"
               }}
             >
-              Hi! I'm Keerthana, a passionate frontend developer and UI/UX designer 
+              Hi! I'm Keerthana, a passionate Software developer and UI/UX designer 
               with over 1 years of experience building modern web applications. 
               I specialize in React.js and love creating beautiful, intuitive user 
               interfaces that provide excellent user experiences...

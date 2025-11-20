@@ -1,5 +1,7 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
+import emailjs from "@emailjs/browser";
+
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -8,12 +10,40 @@ export default function Contact() {
     message: ""
   });
 
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   console.log("Form submitted:", formData);
+  //   alert("Thank you! I'll get back to you soon.");
+  //   setFormData({ name: "", email: "", message: "" });
+  // };
+
   const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("Form submitted:", formData);
-    alert("Thank you! I'll get back to you soon.");
-    setFormData({ name: "", email: "", message: "" });
-  };
+  e.preventDefault();
+
+  emailjs
+    .send(
+      "service_5cjggxa",
+      "template_ifkfmxi",
+      {
+        name: formData.name,
+        email: formData.email,
+        message: formData.message,
+      },
+      "VhaSSAJ0GKO7cRNy0"
+    )
+    .then(
+      (response) => {
+        console.log("SUCCESS!", response.status, response.text);
+        alert("Message sent successfully! I will get back to you shortly.");
+        setFormData({ name: "", email: "", message: "" });
+      },
+      (error) => {
+        console.log("FAILED...", error);
+        alert("Something went wrong. Please try again!");
+      }
+    );
+};
+
 
   const handleChange = (e) => {
     setFormData({
