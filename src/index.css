@@ -1,0 +1,85 @@
+/* Hide scrollbar for Chrome, Edge, Safari */
+::-webkit-scrollbar {
+  width: 0px;
+  height: 0px;
+}
+
+
+a {
+  text-decoration: none !important;
+  color: inherit;
+}
+
+
+/* Hide scrollbar for Firefox */
+* {
+  scrollbar-width: none;
+}
+
+/* Prevent scrollbar space */
+html, body {
+  overflow-y: scroll;
+  scrollbar-width: none;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+html, body {
+  background: #080f1f;
+  color: #ffffff;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+.container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 20px;
+}
+
+.glass {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  padding: 20px;
+  border-radius: 16px;
+  backdrop-filter: blur(10px);
+}
+
+.neon-text {
+  font-weight: 700;
+  background: linear-gradient(90deg, #00eaff, #ff00ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Buttons */
+.btn {
+  padding: 10px 20px;
+  border-radius: 8px;
+  background: #00eaff;
+  color: #000;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.btn:hover {
+  background: #00c1c7;
+}
+
+/* Responsive Grid */
+.grid {
+  display: grid;
+  gap: 24px;
+}
+
+@media (min-width: 768px) {
+  .grid-2 { grid-template-columns: repeat(2, 1fr); }
+  .grid-3 { grid-template-columns: repeat(3, 1fr); }
+}
