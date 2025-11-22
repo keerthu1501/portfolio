@@ -70,7 +70,7 @@ export default function Experience() {
             {experience.length}
           </div>
           <div style={{ color: "#9ca3af", fontSize: "0.875rem" }}>
-            Companies Worked
+            Org Work Experience
           </div>
         </motion.div>
       </motion.div>

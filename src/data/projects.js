@@ -1,39 +1,40 @@
+// Import images correctly
+import pro1 from "../common/assets/pro1.jpg";
+import pro2 from "../common/assets/pro2.jpg";
+import pro3 from "../common/assets/pro3.jpg";
+
 const projects = [
   {
     id: 1,
-    title: "E-Commerce Platform",
-    description: "A full-stack e-commerce platform with cart functionality, payment integration, and admin dashboard.",
-    tech: ["React", "Node.js", "MongoDB", "Stripe"],
-    github: "https://github.com/yourusername/ecommerce",
-    live: "https://ecommerce-demo.vercel.app",
-    image: "https://via.placeholder.com/400x300"
+    title: "E-Commerce Website Development",
+    description:
+      "End-to-end e-commerce website development with modern UI/UX, integrated CMS platforms, and mobile app support. Built stores using React.js, Shopify, WordPress, and custom PHP functionalities. Also developed mobile-friendly versions using React Native and Expo.",
+    tech: ["React.js", "Shopify / WordPress (CMS)", "PHP", "React Native", "Expo"],
+    // github: "https://github.com/yourusername/ecommerce",
+    // live: "https://ecommerce-demo.vercel.app",
+    image: pro2, // Image imported above
   },
+
   {
     id: 2,
-    title: "Task Management App",
-    description: "Collaborative task management tool with real-time updates and team features.",
-    tech: ["React", "Firebase", "Tailwind CSS"],
-    github: "https://github.com/yourusername/task-app",
-    live: "https://task-app-demo.vercel.app",
-    image: "https://via.placeholder.com/400x300"
+    title: "Employee Management Custom Software",
+    description:
+      "A complete employee management system with attendance tracking, role-based login, admin dashboard, and API-based data handling. Designed UI in Figma and developed using React.js and Node.js with streamlined workflows.",
+    tech: ["React.js", "Node.js", "REST API", "Bootstrap", "Figma", "GitHub"],
+    // github: "https://github.com/yourusername/employee-management",
+    // live: "https://employee-demo.vercel.app",
+    image: pro1, // Image imported above
   },
+
   {
     id: 3,
-    title: "Weather Dashboard",
-    description: "Real-time weather dashboard with forecasts, maps, and location-based alerts.",
-    tech: ["React", "OpenWeather API", "Chart.js"],
-    github: "https://github.com/yourusername/weather",
-    live: "https://weather-demo.vercel.app",
-    image: "https://via.placeholder.com/400x300"
-  },
-  {
-    id: 4,
-    title: "Portfolio Website",
-    description: "Personal portfolio with interactive animations and modern design.",
-    tech: ["React", "Framer Motion", "CSS3"],
-    github: "https://github.com/yourusername/portfolio",
-    live: "https://keerthana.dev",
-    image: "https://via.placeholder.com/400x300"
+    title: "Personal Portfolio Website",
+    description:
+      "A modern and responsive personal portfolio built using React.js with Tailwind CSS and Bootstrap for styling. Features project showcases, animations, and a clean professional layout.",
+    tech: ["React.js", "Tailwind CSS", "Bootstrap", "Firebase"],
+    // github: "https://github.com/yourusername/portfolio",
+    // live: "https://keerthana.dev",
+    image: pro3, // Image imported above
   }
 ];
 
