@@ -53,12 +53,12 @@ export default function Contact() {
   };
 
   const contactInfo = [
-    {
-      icon: "📱",
-      label: "Phone",
-      value: "+91 8939316597",
-      link: "tel:+918939316597"
-    },
+    // {
+    //   icon: "📱",
+    //   label: "Phone",
+    //   value: "+91 8939316597",
+    //   link: "tel:+918939316597"
+    // },
     {
       icon: "✉️",
       label: "Email",
