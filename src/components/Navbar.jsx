@@ -68,6 +68,7 @@ export default function Navbar() {
           <Link className={path === "/projects" ? "active" : ""} to="/projects">Projects</Link>
           <Link className={path === "/about" ? "active" : ""} to="/about">About</Link>
           <Link className={path === "/experience" ? "active" : ""} to="/experience">Experience</Link>
+          <Link className={path === "/achievements" ? "active" : ""} to="/achievements">Achievements</Link>
           <Link className={path === "/contact" ? "active" : ""} to="/contact">Contact</Link>
         </nav>
 
@@ -114,6 +115,10 @@ export default function Navbar() {
           About
         </Link>
         <Link className={path === "/experience" ? "active" : ""} to="/experience">
+    <span className="nav-icon">💼</span>
+    Experience
+  </Link>
+   <Link className={path === "/achievements" ? "active" : ""} to="/achievements">
     <span className="nav-icon">💼</span>
     Experience
   </Link>
