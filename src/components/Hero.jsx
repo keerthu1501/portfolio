@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 export default function Hero() {
   return (
-    <section className="container" style={{ marginTop: "60px", textAlign:"center" }}>
+    <section className="container" style={{ marginTop: "0px", textAlign:"center" }}>
       <motion.h1
         initial={{ opacity:0, y:20 }}
         animate={{ opacity:1, y:0 }}

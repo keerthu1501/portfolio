@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 
 // Path to resume in assets folder
-import resumeFile from "../common/assets/keerthana_N-Resume.pdf";
+import resumeFile from "../common/assets/Keerthana_N_Resume-Developer.pdf";
 
 export default function About() {
   const [hoveredSkill, setHoveredSkill] = useState(null);

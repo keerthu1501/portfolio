@@ -1,10 +1,13 @@
 import { Link, useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
+// import { FaSun, FaMoon } from "react-icons/fa";
 
 export default function Navbar() {
   const path = useLocation().pathname;
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+
+  // const [dark, setDark] = useState(false);
 
   // Close menu when route changes
   useEffect(() => {
@@ -16,26 +19,26 @@ export default function Navbar() {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
     };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   // Prevent body scroll when menu is open
   useEffect(() => {
     if (isMenuOpen) {
-      document.body.style.overflow = 'hidden';
+      document.body.style.overflow = "hidden";
     } else {
-      document.body.style.overflow = 'unset';
+      document.body.style.overflow = "unset";
     }
     return () => {
-      document.body.style.overflow = 'unset';
+      document.body.style.overflow = "unset";
     };
   }, [isMenuOpen]);
 
   return (
     <>
-      <header 
-        className="glass navbar-header" 
+      <header
+        className="glass navbar-header"
         style={{
           display: "flex",
           justifyContent: "space-between",
@@ -45,35 +48,76 @@ export default function Navbar() {
           top: 0,
           zIndex: 1000,
           transition: "all 0.3s ease",
-          boxShadow: isScrolled ? "0 4px 20px rgba(0,0,0,0.3)" : "none"
+          boxShadow: isScrolled ? "0 4px 20px rgba(0,0,0,0.3)" : "none",
         }}
       >
         <Link to="/" style={{ textDecoration: "none" }}>
-          <h2 className="neon-text" style={{ 
-            fontSize: "clamp(1.25rem, 4vw, 1.5rem)", 
-            margin: 0 
-          }}>
+          <h2
+            className="neon-text"
+            style={{
+              fontSize: "clamp(1.25rem, 4vw, 1.5rem)",
+              margin: 0,
+            }}
+          >
             Keerthana.dev
           </h2>
         </Link>
 
         {/* Desktop Navigation */}
-        <nav className="desktop-nav" style={{ 
-          display: "flex", 
-          gap: "clamp(1rem, 3vw, 2rem)",
-          alignItems: "center",
-          textDecoration: "none",
-        }}>
-          <Link className={path === "/" ? "active" : ""} to="/">Home</Link>
-          <Link className={path === "/projects" ? "active" : ""} to="/projects">Projects</Link>
-          <Link className={path === "/about" ? "active" : ""} to="/about">About</Link>
-          <Link className={path === "/experience" ? "active" : ""} to="/experience">Experience</Link>
-          <Link className={path === "/achievements" ? "active" : ""} to="/achievements">Achievements</Link>
-          <Link className={path === "/contact" ? "active" : ""} to="/contact">Contact</Link>
+        <nav
+          className="desktop-nav"
+          style={{
+            display: "flex",
+            gap: "clamp(1rem, 3vw, 2rem)",
+            alignItems: "center",
+            textDecoration: "none",
+          }}
+        >
+          <Link className={path === "/" ? "active" : ""} to="/">
+            Home
+          </Link>
+          <Link className={path === "/projects" ? "active" : ""} to="/projects">
+            Projects
+          </Link>
+          <Link className={path === "/about" ? "active" : ""} to="/about">
+            About
+          </Link>
+          <Link
+            className={path === "/experience" ? "active" : ""}
+            to="/experience"
+          >
+            Experience
+          </Link>
+          <Link
+            className={path === "/achievements" ? "active" : ""}
+            to="/achievements"
+          >
+            Achievements
+          </Link>
+          <Link className={path === "/contact" ? "active" : ""} to="/contact">
+            Contact
+          </Link>
+
+          {/* <div
+           
+          >
+            <button
+              onClick={() => setDark(!dark)}
+              style={{
+                padding: "10px 15px",
+                fontSize: "20px",
+                cursor: "pointer",
+                borderRadius: "8px",
+                border: "none",
+              }}
+            >
+              {dark ? <FaSun /> : <FaMoon />}
+            </button>
+          </div> */}
         </nav>
 
         {/* Hamburger Button */}
-        <button 
+        <button
           className="hamburger-btn"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
           aria-label="Toggle menu"
@@ -83,10 +127,10 @@ export default function Navbar() {
             border: "none",
             cursor: "pointer",
             padding: "0.5rem",
-            zIndex: 1001
+            zIndex: 1001,
           }}
         >
-          <div className={`hamburger ${isMenuOpen ? 'open' : ''}`}>
+          <div className={`hamburger ${isMenuOpen ? "open" : ""}`}>
             <span></span>
             <span></span>
             <span></span>
@@ -95,13 +139,13 @@ export default function Navbar() {
       </header>
 
       {/* Mobile Menu Overlay */}
-      <div 
-        className={`mobile-overlay ${isMenuOpen ? 'open' : ''}`}
+      <div
+        className={`mobile-overlay ${isMenuOpen ? "open" : ""}`}
         onClick={() => setIsMenuOpen(false)}
       />
 
       {/* Mobile Navigation */}
-      <nav className={`mobile-nav ${isMenuOpen ? 'open' : ''}`}>
+      <nav className={`mobile-nav ${isMenuOpen ? "open" : ""}`}>
         <Link className={path === "/" ? "active" : ""} to="/">
           <span className="nav-icon">🏠</span>
           Home
@@ -114,14 +158,20 @@ export default function Navbar() {
           <span className="nav-icon">👤</span>
           About
         </Link>
-        <Link className={path === "/experience" ? "active" : ""} to="/experience">
-    <span className="nav-icon">💼</span>
-    Experience
-  </Link>
-   <Link className={path === "/achievements" ? "active" : ""} to="/achievements">
-    <span className="nav-icon">💼</span>
-    Experience
-  </Link>
+        <Link
+          className={path === "/experience" ? "active" : ""}
+          to="/experience"
+        >
+          <span className="nav-icon">💼</span>
+          Experience
+        </Link>
+        <Link
+          className={path === "/achievements" ? "active" : ""}
+          to="/achievements"
+        >
+          <span className="nav-icon">💼</span>
+          Experience
+        </Link>
         <Link className={path === "/contact" ? "active" : ""} to="/contact">
           <span className="nav-icon">✉️</span>
           Contact

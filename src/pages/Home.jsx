@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useRef, useEffect, useState } from "react";
 import Hero from "../components/Hero";
 import SkillWheel from "../components/SkillWheel";
+import myImage from "../common/assets/my-photo.jpg";
 
 export default function Home() {
   const navigate = useNavigate();
@@ -132,14 +133,14 @@ export default function Home() {
           }}
         />
 
-        <motion.div
+        {/* <motion.div
           style={{
             position: "absolute",
             top: "10%",
             right: "-20%",
             width: "min(800px, 80vw)",
             height: "min(800px, 80vw)",
-            backgroundImage: "url('https://images.unsplash.com/photo-1639322537228-f710d846310a?w=800&q=80')",
+            background Image: "url('https://images.unsplash.com/photo-1639322537228-f710d846310a?w=800&q=80')",
             backgroundSize: "cover",
             backgroundPosition: "center",
             borderRadius: "50%",
@@ -151,7 +152,7 @@ export default function Home() {
             x: mousePosition.x,
             mixBlendMode: "screen"
           }}
-        />
+        /> */}
 
         <div className="container-grid">
           {/* Left Side - 3D Interactive Card */}
@@ -180,7 +181,7 @@ export default function Home() {
                   animate={{ scale: [1, 1.05, 1], rotate: [0, 2, 0] }}
                   transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
                   style={{
-                    backgroundImage: "url('https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&q=80')",
+                    backgroundImage: `url(${myImage})`,
                     backgroundSize: "cover",
                     backgroundPosition: "center"
                   }}
@@ -232,7 +233,7 @@ export default function Home() {
                 ))}
 
                 {/* Central Icon/Avatar */}
-                <motion.div
+                {/* <motion.div
                   className="avatar-icon"
                   animate={{
                     y: [0, -20, 0],
@@ -245,7 +246,7 @@ export default function Home() {
                   }}
                 >
                   👩‍💻
-                </motion.div>
+                </motion.div> */}
 
                 {/* Particle System */}
                 {[...Array(20)].map((_, i) => (
