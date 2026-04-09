@@ -4,7 +4,7 @@ import experience, { calculateDuration, formatDate, calculateTotalExperience } f
 
 export default function Experience() {
   const [selectedJob, setSelectedJob] = useState(0);
-  const [hoveredIndex, setHoveredIndex] = useState(null);
+  // const [hoveredIndex, setHoveredIndex] = useState(null);
 
   return (
     <main style={{ padding: "3rem 1rem", maxWidth: "1400px", margin: "0 auto" }}>

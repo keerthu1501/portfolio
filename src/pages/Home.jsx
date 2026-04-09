@@ -11,7 +11,7 @@ export default function Home() {
   const aboutRef = useRef(null);
   const projectsRef = useRef(null);
   
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  // const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
 
@@ -47,13 +47,13 @@ export default function Home() {
 
   // Multi-layer parallax
   const y1 = useTransform(smoothProgress, [0, 1], [0, -300]);
-  const y2 = useTransform(smoothProgress, [0, 1], [0, -150]);
+  // const y2 = useTransform(smoothProgress, [0, 1], [0, -150]);
   const y3 = useTransform(smoothProgress, [0, 1], [0, 150]);
   const y4 = useTransform(smoothProgress, [0, 1], [0, 300]);
   const scale1 = useTransform(smoothProgress, [0, 0.5, 1], [1, 1.2, 1]);
-  const opacity1 = useTransform(smoothProgress, [0, 0.3, 0.6], [1, 0.5, 0]);
+  // const opacity1 = useTransform(smoothProgress, [0, 0.3, 0.6], [1, 0.5, 0]);
   const opacity2 = useTransform(smoothProgress, [0.3, 0.5, 0.8], [0, 1, 1]);
-  const rotate = useTransform(smoothProgress, [0, 1], [0, 360]);
+  // const rotate = useTransform(smoothProgress, [0, 1], [0, 360]);
 
   return (
     <div ref={containerRef} style={{ position: "relative", background: "#0a0a0f" }}>
