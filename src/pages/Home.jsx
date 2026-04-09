@@ -12,8 +12,8 @@ export default function Home() {
   const projectsRef = useRef(null);
   
   // const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
+  // const mouseX = useMotionValue(0);
+  // const mouseY = useMotionValue(0);
 
   // Advanced mouse tracking for parallax
   useEffect(() => {
