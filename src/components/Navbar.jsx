@@ -1,5 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
+import React from "react";
 // import { FaSun, FaMoon } from "react-icons/fa";
 
 export default function Navbar() {
@@ -15,7 +16,7 @@ export default function Navbar() {
   }, [path]);
 
   // Detect scroll for navbar shadow
-  useEffect(() => {
+  useEffect(() => {   
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
     };
