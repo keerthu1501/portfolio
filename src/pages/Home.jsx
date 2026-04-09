@@ -24,7 +24,7 @@ export default function Home() {
       const x = (clientX / innerWidth - 0.5) * 2;
       const y = (clientY / innerHeight - 0.5) * 2;
       
-      setMousePosition({ x: x * 30, y: y * 30 });
+      // setMousePosition({ x: x * 30, y: y * 30 });
       mouseX.set(x * 50);
       mouseY.set(y * 50);
     };

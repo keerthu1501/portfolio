@@ -99,8 +99,8 @@ export default function Experience() {
             <motion.div
               key={job.id}
               onClick={() => setSelectedJob(index)}
-              onMouseEnter={() => setHoveredIndex(index)}
-              onMouseLeave={() => setHoveredIndex(null)}
+              // onMouseEnter={() => setHoveredIndex(index)}
+              // onMouseLeave={() => setHoveredIndex(null)}
               whileHover={{ x: 10 }}
               style={{
                 padding: "1.5rem",
