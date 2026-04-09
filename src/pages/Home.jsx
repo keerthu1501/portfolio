@@ -1,6 +1,6 @@
 import { motion, useScroll, useTransform, useSpring, useMotionValue } from "framer-motion";
 import { useNavigate } from "react-router-dom";
-import { useRef, useEffect, useState } from "react";
+import { useRef, useEffect} from "react";
 import Hero from "../components/Hero";
 import SkillWheel from "../components/SkillWheel";
 import myImage from "../common/assets/my-photo.jpg";
@@ -12,8 +12,8 @@ export default function Home() {
   const projectsRef = useRef(null);
   
   // const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  // const mouseX = useMotionValue(0);
-  // const mouseY = useMotionValue(0);
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
 
   // Advanced mouse tracking for parallax
   useEffect(() => {
