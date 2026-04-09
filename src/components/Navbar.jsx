@@ -156,7 +156,7 @@ export default function Navbar() {
         </Link>
         <Link className={path === "/about" ? "active" : ""} to="/about">
           <span className="nav-icon">👤</span>
-          About me
+          About
         </Link>
         <Link
           className={path === "/experience" ? "active" : ""}
