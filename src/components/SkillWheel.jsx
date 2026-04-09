@@ -39,7 +39,10 @@ export default function SkillWheel() {
 
   const { wheelSize, translateDist, fontSize } = getResponsiveValues();
   const isMobile = windowWidth < 768;
-  const isTablet = windowWidth >= 768 && windowWidth < 1024;
+
+  // eslint-disable-next-line no-unused-vars
+
+  // const isTablet = windowWidth >= 768 && windowWidth < 1024;
 
   return (
     <section className="skillwheel-section">
