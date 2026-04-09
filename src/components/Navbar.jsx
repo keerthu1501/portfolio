@@ -148,7 +148,7 @@ export default function Navbar() {
       <nav className={`mobile-nav ${isMenuOpen ? "open" : ""}`}>
         <Link className={path === "/" ? "active" : ""} to="/">
           <span className="nav-icon">🏠</span>
-          Home
+          Home 
         </Link>
         <Link className={path === "/projects" ? "active" : ""} to="/projects">
           <span className="nav-icon">💼</span>
@@ -156,7 +156,7 @@ export default function Navbar() {
         </Link>
         <Link className={path === "/about" ? "active" : ""} to="/about">
           <span className="nav-icon">👤</span>
-          About
+          About me
         </Link>
         <Link
           className={path === "/experience" ? "active" : ""}
