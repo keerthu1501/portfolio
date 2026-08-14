@@ -3,23 +3,23 @@ import { Link } from "react-router-dom";
 
 export default function Hero() {
   return (
-    <section className="container" style={{ marginTop: "0px", textAlign:"center" }}>
+    <section className="hero-section">
       <motion.h1
-        initial={{ opacity:0, y:20 }}
-        animate={{ opacity:1, y:0 }}
+        initial={{ opacity: 0, y: 16 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
         className="neon-text"
-        style={{ fontSize:"48px" }}
       >
-        Hi, I'm Keerthana 👋
+        Hi, I'm Keerthana
       </motion.h1>
 
-      <p style={{ color:"#ccc", marginTop:"10px" }}>
+      <p className="hero-subtitle">
         React.js Developer • UI/UX Designer • Creative Frontend Engineer
       </p>
 
-<Link to="/contact">
-  <button className="btn" style={{ marginTop:"20px" }}>Hire Me</button>
-</Link>
+      <Link to="/contact" className="btn">
+        Hire Me
+      </Link>
     </section>
   );
 }

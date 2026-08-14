@@ -1,113 +1,5 @@
-// Experience data
+// Experience data — latest first
 const experience = [
-  {
-    id: 1,
-    company: "Final Year Academic Project",
-    role: "Machine Learning Project Developer",
-    type: "Academic",
-    startDate: "2022-08-01",
-    endDate: "2023-04-30",
-    location: "Chennai, India",
-    description:
-      "Developed a machine learning model to predict agricultural soil contamination levels using Python and real-world datasets. The project focused on identifying harmful contamination in farmland soil based on user inputs and Kaggle-sourced data.",
-    responsibilities: [
-      "Collected and pre-processed soil datasets from Kaggle",
-      "Implemented ML algorithms to classify contamination levels",
-      "Developed Python-based predictive scripts using Jupyter Notebook",
-      "Performed data cleaning, feature engineering, and model evaluation",
-      "Built an interactive system where users enter soil parameters to receive predicted contamination results",
-      "Analyzed accuracy and optimized model performance",
-      "Prepared project documentation, research paper content, and final presentation"
-    ],
-    technologies: [
-      "Python",
-      "Machine Learning",
-      "Pandas",
-      "NumPy",
-      "Scikit-learn",
-      "Jupyter Notebook",
-      "Matplotlib"
-    ],
-    achievements: [
-      "Successfully built a functional soil contamination prediction model",
-      "Achieved strong prediction accuracy with optimized ML algorithms",
-      "Completed full project lifecycle—dataset processing to prototype output system",
-      "Presented the project with distinction during final-year evaluation",
-      "Published research paper in International Conference on Recent Advances in Science, Engineering & Management (ICRASEM 2023)"
-    ],
-    logo: "🧪",
-    color: "#22d3ee"
-  },
-
-  {
-    id: 2,
-    company: "DLK Career Development Centre",
-    role: "Python Trainee (Intern)",
-    type: "Internship",
-    startDate: "2022-04-01",
-    endDate: "2022-04-30",
-    location: "Chennai, India",
-    description:
-      "Completed a one-month Python training internship during my final year of engineering, learning Python fundamentals, SQL basics, MATLAB introduction, and image recognition concepts.",
-    responsibilities: [
-      "Practiced core Python programming concepts",
-      "Worked on SQL basics and relational DB concepts",
-      "Learned MATLAB fundamentals",
-      "Explored Python-based basic image recognition",
-      "Used Jupyter Notebook for Python execution",
-      "Completed exercises & tasks during internship"
-    ],
-    technologies: ["Python", "SQL", "MATLAB (Basics)", "Jupyter Notebook"],
-    achievements: [
-      "Successfully completed Python trainee internship certification",
-      "Gained strong foundation in Python basics",
-      "Understood image recognition fundamentals"
-    ],
-    logo: "💼",
-    color: "#a855f7"
-  },
-
-  {
-    id: 3,
-    company: "Magic Bus India Foundation",
-    role: "Cloud Engineer Trainee",
-    type: "Full-time",
-    startDate: "2024-01-03",
-    endDate: "2024-05-31",
-    location: "Chennai, India",
-    description:
-      "Worked as an AWS Cloud Engineer Trainee with hands-on experience in cloud deployment, infrastructure management, and automation using AWS services.",
-    responsibilities: [
-      "Deployed cloud infrastructure using EC2, VPC, ECS and ELB",
-      "Configured IAM roles, policies, MFA, and secure access",
-      "Implemented serverless architecture using AWS Lambda",
-      "Managed S3 and EFS for storage solutions",
-      "Monitored systems using CloudWatch",
-      "Automated infra provisioning with CloudFormation",
-      "Documented cloud procedures and architecture flows"
-    ],
-    technologies: [
-      "AWS EC2",
-      "AWS VPC",
-      "IAM",
-      "S3",
-      "EFS",
-      "AWS Lambda",
-      "CloudWatch",
-      "CloudFormation",
-      "ECS",
-      "AWS CLI"
-    ],
-    achievements: [
-      "Successfully completed AWS Cloud Practitioner (CLF-C02)",
-      "Built automated infra templates in CloudFormation",
-      "Improved reliability through secure IAM & VPC config",
-      "Worked with serverless automation and event workflows"
-    ],
-    logo: "🌱",
-    color: "#10b981"
-  },
-
   {
     id: 4,
     company: "VSM Global Technologies",
@@ -154,7 +46,119 @@ const experience = [
       "Contributed to internal product development and optimization"
     ],
     logo: "🎓",
-    color: "#f59e0b"
+    color: "#f59e0b",
+    track: "professional"
+  },
+
+  {
+    id: 3,
+    company: "Magic Bus India Foundation",
+    role: "Cloud Engineer Trainee",
+    type: "Trainee",
+    startDate: "2024-01-03",
+    endDate: "2024-05-31",
+    location: "Chennai, India",
+    description:
+      "Worked as an AWS Cloud Engineer Trainee with hands-on experience in cloud deployment, infrastructure management, and automation using AWS services.",
+    responsibilities: [
+      "Deployed cloud infrastructure using EC2, VPC, ECS and ELB",
+      "Configured IAM roles, policies, MFA, and secure access",
+      "Implemented serverless architecture using AWS Lambda",
+      "Managed S3 and EFS for storage solutions",
+      "Monitored systems using CloudWatch",
+      "Automated infra provisioning with CloudFormation",
+      "Documented cloud procedures and architecture flows"
+    ],
+    technologies: [
+      "AWS EC2",
+      "AWS VPC",
+      "IAM",
+      "S3",
+      "EFS",
+      "AWS Lambda",
+      "CloudWatch",
+      "CloudFormation",
+      "ECS",
+      "AWS CLI"
+    ],
+    achievements: [
+      "Successfully completed AWS Cloud Practitioner (CLF-C02)",
+      "Built automated infra templates in CloudFormation",
+      "Improved reliability through secure IAM & VPC config",
+      "Worked with serverless automation and event workflows"
+    ],
+    logo: "🌱",
+    color: "#10b981",
+    track: "trainee"
+  },
+
+  {
+    id: 1,
+    company: "Final Year Academic Project",
+    role: "Machine Learning Project Developer",
+    type: "Academic",
+    startDate: "2022-08-01",
+    endDate: "2023-04-30",
+    location: "Chennai, India",
+    description:
+      "Developed a machine learning model to predict agricultural soil contamination levels using Python and real-world datasets. The project focused on identifying harmful contamination in farmland soil based on user inputs and Kaggle-sourced data.",
+    responsibilities: [
+      "Collected and pre-processed soil datasets from Kaggle",
+      "Implemented ML algorithms to classify contamination levels",
+      "Developed Python-based predictive scripts using Jupyter Notebook",
+      "Performed data cleaning, feature engineering, and model evaluation",
+      "Built an interactive system where users enter soil parameters to receive predicted contamination results",
+      "Analyzed accuracy and optimized model performance",
+      "Prepared project documentation, research paper content, and final presentation"
+    ],
+    technologies: [
+      "Python",
+      "Machine Learning",
+      "Pandas",
+      "NumPy",
+      "Scikit-learn",
+      "Jupyter Notebook",
+      "Matplotlib"
+    ],
+    achievements: [
+      "Successfully built a functional soil contamination prediction model",
+      "Achieved strong prediction accuracy with optimized ML algorithms",
+      "Completed full project lifecycle—dataset processing to prototype output system",
+      "Presented the project with distinction during final-year evaluation",
+      "Published research paper in International Conference on Recent Advances in Science, Engineering & Management (ICRASEM 2023)"
+    ],
+    logo: "🧪",
+    color: "#22d3ee",
+    track: "trainee"
+  },
+
+  {
+    id: 2,
+    company: "DLK Career Development Centre",
+    role: "Python Trainee (Intern)",
+    type: "Internship",
+    startDate: "2022-04-01",
+    endDate: "2022-04-30",
+    location: "Chennai, India",
+    description:
+      "Completed a one-month Python training internship during my final year of engineering, learning Python fundamentals, SQL basics, MATLAB introduction, and image recognition concepts.",
+    responsibilities: [
+      "Practiced core Python programming concepts",
+      "Worked on SQL basics and relational DB concepts",
+      "Learned MATLAB fundamentals",
+      "Explored Python-based basic image recognition",
+      "Used Jupyter Notebook for Python execution",
+      "Completed exercises & tasks during internship"
+    ],
+    technologies: ["Python", "SQL", "MATLAB (Basics)", "Jupyter Notebook"],
+    achievements: [
+      "Successfully completed Python trainee internship certification",
+      "Gained strong foundation in Python basics",
+      "Understood image recognition fundamentals"
+    ],
+    logo: "💼",
+    color: "#a855f7",
+    track: "internship"
   }
 ];
 
@@ -198,8 +202,11 @@ export function calculateDuration(startDate, endDate) {
 export function calculateTotalExperience() {
   if (experience.length === 0) return "0 years";
 
-  const first = experience[experience.length - 1].startDate;
-  return calculateDuration(first, null);
+  const earliest = experience.reduce((min, job) =>
+    job.startDate < min ? job.startDate : min
+  , experience[0].startDate);
+
+  return calculateDuration(earliest, null);
 }
 
 

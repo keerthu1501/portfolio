@@ -1,21 +1,69 @@
 import { motion } from "framer-motion";
-import { useState } from "react";
-
-// Path to resume in assets folder
 import resumeFile from "../common/assets/Keerthana_N_Resume-Developer.pdf";
+import education from "../data/education";
 
 export default function About() {
-  const [hoveredSkill, setHoveredSkill] = useState(null);
-
-  const skills = [
-    { name: "React.js", icon: "⚛️", level: 90, color: "#61dafb" },
-    { name: "React Native", icon: "📱", level: 85, color: "#61dafb" },
-    { name: "JavaScript", icon: "⚡", level: 88, color: "#f7df1e" },
-    { name: "Figma", icon: "🎨", level: 92, color: "#f24e1e" },
-    { name: "UI/UX Design", icon: "✨", level: 90, color: "#a855f7" },
-    { name: "API Integration", icon: "🔗", level: 85, color: "#10b981" },
-    { name: "AWS", icon: "☁️", level: 75, color: "#ff9900" },
-    { name: "Git", icon: "🔀", level: 80, color: "#f05032" }
+  const skillGroups = [
+    {
+      title: "React & Web",
+      icon: "⚛️",
+      color: "#22d3ee",
+      items: [
+        "React.js",
+        "JavaScript",
+        "HTML5",
+        "CSS3",
+        "Bootstrap",
+        "React Hooks",
+        "Redux Toolkit",
+        "RTK Query",
+        "Axios",
+        "REST APIs",
+      ],
+    },
+    {
+      title: "Mobile",
+      icon: "📱",
+      color: "#61dafb",
+      items: [
+        "React Native",
+        "React Native CLI",
+        "Expo",
+        "React Navigation",
+        "Android",
+        "AsyncStorage",
+        "MMKV",
+        "Firebase",
+        "FCM",
+        "Notifee",
+      ],
+    },
+    {
+      title: "Real-time & Maps",
+      icon: "📍",
+      color: "#10b981",
+      items: [
+        "WebSocket",
+        "Google Maps",
+        "Geolocation",
+        "Real-time Tracking",
+        "Push Notifications",
+      ],
+    },
+    {
+      title: "Tools",
+      icon: "🛠️",
+      color: "#a855f7",
+      items: [
+        "Git",
+        "GitHub",
+        "Postman",
+        "Swagger",
+        "Android Studio",
+        "VS Code",
+        "ADB",
+      ],
+    },
   ];
 
   const interests = [
@@ -38,7 +86,7 @@ export default function About() {
       minHeight: "100vh"
     }}>
       {/* Hero Section */}
-      <motion.div
+      {/* <motion.div
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
@@ -132,7 +180,7 @@ export default function About() {
         >
           📍 Based in Chennai | 🌏 Tamil, English
         </motion.p>
-      </motion.div>
+      </motion.div> */}
 
       {/* Main Content Grid */}
       <div style={{
@@ -288,78 +336,140 @@ export default function About() {
 
         <div style={{
           display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
-          gap: "1.5rem"
+          gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
+          gap: "1.25rem"
         }}>
-          {skills.map((skill, index) => (
+          {skillGroups.map((group, index) => (
             <motion.div
-              key={index}
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.9 + index * 0.05 }}
-              onMouseEnter={() => setHoveredSkill(index)}
-              onMouseLeave={() => setHoveredSkill(null)}
-              whileHover={{ y: -5 }}
+              key={group.title}
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.9 + index * 0.06 }}
               style={{
-                padding: "1.5rem",
-                background: hoveredSkill === index 
-                  ? `${skill.color}15` 
-                  : "rgba(255, 255, 255, 0.03)",
+                padding: "1.25rem",
+                background: "rgba(255, 255, 255, 0.03)",
                 borderRadius: "1rem",
-                border: `2px solid ${hoveredSkill === index ? skill.color : "rgba(255, 255, 255, 0.1)"}`,
-                transition: "all 0.3s ease",
-                cursor: "pointer"
+                border: `1px solid ${group.color}40`
               }}
             >
-              <div style={{
+              <h3 style={{
+                color: group.color,
+                fontSize: "1.05rem",
+                fontWeight: 700,
+                marginBottom: "0.9rem",
                 display: "flex",
                 alignItems: "center",
-                justifyContent: "space-between",
-                marginBottom: "1rem"
+                gap: "0.5rem"
               }}>
-                <div style={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: "0.75rem"
-                }}>
-                  <span style={{ fontSize: "1.75rem" }}>{skill.icon}</span>
-                  <span style={{
-                    color: "#f3f4f6",
-                    fontSize: "1rem",
-                    fontWeight: 600
-                  }}>
-                    {skill.name}
-                  </span>
-                </div>
-                <span style={{
-                  color: skill.color,
-                  fontSize: "0.875rem",
-                  fontWeight: 700
-                }}>
-                  {skill.level}%
-                </span>
-              </div>
-              
-              {/* Progress Bar */}
+                <span>{group.icon}</span>
+                {group.title}
+              </h3>
               <div style={{
-                width: "100%",
-                height: "8px",
-                background: "rgba(255, 255, 255, 0.1)",
-                borderRadius: "10px",
-                overflow: "hidden"
+                display: "flex",
+                flexWrap: "wrap",
+                gap: "0.5rem"
               }}>
-                <motion.div
-                  initial={{ width: 0 }}
-                  animate={{ width: `${skill.level}%` }}
-                  transition={{ delay: 1 + index * 0.05, duration: 1, ease: "easeOut" }}
-                  style={{
-                    height: "100%",
-                    background: `linear-gradient(90deg, ${skill.color}, ${skill.color}dd)`,
-                    borderRadius: "10px"
-                  }}
-                />
+                {group.items.map((item) => (
+                  <span
+                    key={item}
+                    style={{
+                      padding: "0.4rem 0.7rem",
+                      borderRadius: "999px",
+                      background: `${group.color}14`,
+                      border: `1px solid ${group.color}33`,
+                      color: "#e5e7eb",
+                      fontSize: "0.8rem",
+                      fontWeight: 600
+                    }}
+                  >
+                    {item}
+                  </span>
+                ))}
               </div>
             </motion.div>
+          ))}
+        </div>
+      </motion.div>
+
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 1.05 }}
+        className="glass"
+        style={{
+          padding: "2.5rem",
+          borderRadius: "1.5rem",
+          marginBottom: "3rem",
+          border: "1px solid rgba(255, 255, 255, 0.1)"
+        }}
+      >
+        <h2 style={{
+          color: "#22d3ee",
+          fontSize: "1.75rem",
+          marginBottom: "1.5rem",
+          display: "flex",
+          alignItems: "center",
+          gap: "0.5rem"
+        }}>
+          <span>🎓</span> Education
+        </h2>
+
+        <div style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))",
+          gap: "1rem"
+        }}>
+          {education.map((item) => (
+            <div
+              key={item.id}
+              style={{
+                padding: "1.25rem",
+                borderRadius: "1rem",
+                background: "rgba(255, 255, 255, 0.03)",
+                border: `1px solid ${item.color}40`
+              }}
+            >
+              <div style={{ fontSize: "1.5rem", marginBottom: "0.4rem" }}>{item.icon}</div>
+              <h3 style={{ color: "#f3f4f6", fontSize: "1.05rem", marginBottom: "0.2rem" }}>
+                {item.title}
+              </h3>
+              <p style={{ color: "#9ca3af", fontSize: "0.85rem", marginBottom: "0.75rem" }}>
+                {item.subtitle} · {item.year}
+              </p>
+              <div style={{ color: item.color, fontSize: "1.35rem", fontWeight: 700 }}>
+                {item.score}
+              </div>
+              <div style={{ color: "#9ca3af", fontSize: "0.75rem", marginTop: "0.15rem" }}>
+                {item.scoreLabel}
+              </div>
+
+              {item.years && (
+                <div style={{
+                  display: "grid",
+                  gridTemplateColumns: "1fr 1fr",
+                  gap: "0.5rem",
+                  marginTop: "0.9rem"
+                }}>
+                  {item.years.map((year) => (
+                    <div
+                      key={year.label}
+                      style={{
+                        padding: "0.55rem 0.65rem",
+                        borderRadius: "0.6rem",
+                        background: "rgba(168, 85, 247, 0.08)",
+                        display: "flex",
+                        justifyContent: "space-between",
+                        gap: "0.4rem",
+                        fontSize: "0.78rem"
+                      }}
+                    >
+                      <span style={{ color: "#d1d5db" }}>{year.label}</span>
+                      <span style={{ color: item.color, fontWeight: 700 }}>{year.score}</span>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
           ))}
         </div>
       </motion.div>

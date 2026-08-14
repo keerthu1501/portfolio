@@ -5,71 +5,60 @@ import "../common/css/skillwheel.css";
 
 export default function SkillWheel() {
   const [activeIndex, setActiveIndex] = useState(0);
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const [isMobile, setIsMobile] = useState(
+    () => typeof window !== "undefined" && window.innerWidth < 768
+  );
 
-  const wheelSkills = skill.map(item => item.name);
+  const wheelSkills = skill.map((item) => item.name);
 
-  // Responsive window width detection
   useEffect(() => {
-    const handleResize = () => setWindowWidth(window.innerWidth);
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+    const media = window.matchMedia("(max-width: 767px)");
+    const update = () => setIsMobile(media.matches);
+    update();
+    media.addEventListener("change", update);
+    return () => media.removeEventListener("change", update);
   }, []);
 
-  // Auto-rotate skills
   useEffect(() => {
-    const interval = setInterval(() => {
-      setActiveIndex(prev => (prev + 1) % skill.length);
-    }, 1800);
-    return () => clearInterval(interval);
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduceMotion) return undefined;
+
+    const tick = () => setActiveIndex((prev) => (prev + 1) % skill.length);
+    let timer = window.setInterval(tick, 2800);
+
+    const onVisibility = () => {
+      window.clearInterval(timer);
+      if (!document.hidden) timer = window.setInterval(tick, 2800);
+    };
+
+    document.addEventListener("visibilitychange", onVisibility);
+    return () => {
+      window.clearInterval(timer);
+      document.removeEventListener("visibilitychange", onVisibility);
+    };
   }, []);
-
-  // Ultra-responsive sizing
-  const getResponsiveValues = () => {
-    if (windowWidth < 480) {
-      return { wheelSize: 180, translateDist: 70, fontSize: '0.7rem' };
-    } else if (windowWidth < 768) {
-      return { wheelSize: 200, translateDist: 75, fontSize: '0.75rem' };
-    } else if (windowWidth < 1024) {
-      return { wheelSize: 220, translateDist: 85, fontSize: '0.85rem' };
-    } else {
-      return { wheelSize: 240, translateDist: 95, fontSize: '0.875rem' };
-    }
-  };
-
-  const { wheelSize, translateDist, fontSize } = getResponsiveValues();
-  const isMobile = windowWidth < 768;
-
-  // eslint-disable-next-line no-unused-vars
-
-  // const isTablet = windowWidth >= 768 && windowWidth < 1024;
 
   return (
     <section className="skillwheel-section">
       <div className="container">
-        {/* Section Title */}
         <h2 className="neon-text skillwheel-title">Skills</h2>
 
         <div className="skillwheel-layout">
-          {/* Left Panel - Desktop & Tablet */}
           {!isMobile && (
             <motion.div
               key={`left-${activeIndex}`}
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5 }}
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.35 }}
               className="skillwheel-panel skillwheel-panel-left"
             >
               <h3 className="panel-title">{skill[activeIndex].name}</h3>
-              
               <div className="panel-content">
                 <div className="panel-row">
                   <span className="label">Experience:</span>
                   <span className="value">{skill[activeIndex].exp}</span>
                 </div>
-                
                 <p className="description">{skill[activeIndex].desc}</p>
-                
                 <div className="panel-row">
                   <span className="label">Tools:</span>
                   <span className="value-muted">{skill[activeIndex].tools}</span>
@@ -78,93 +67,67 @@ export default function SkillWheel() {
             </motion.div>
           )}
 
-          {/* Center Wheel */}
           <div className="skillwheel-center">
-            <motion.div
-              animate={{ rotate: 360 }}
-              transition={{ duration: 12, repeat: Infinity, ease: "linear" }}
-              className="wheel-container"
-              style={{
-                width: `${wheelSize}px`,
-                height: `${wheelSize}px`,
-              }}
-            >
-              {/* Center Dot */}
+            <div className="wheel-container">
               <div className="wheel-center-dot" />
-              
               {wheelSkills.map((name, i) => {
                 const isActive = i === activeIndex;
                 const angle = (360 / wheelSkills.length) * i;
-                
+
                 return (
                   <div
-                    key={i}
+                    key={name}
                     className="skill-orbit"
-                    style={{
-                      transform: `rotate(${angle}deg) translate(${translateDist}px)`,
-                    }}
+                    style={{ "--angle": `${angle}deg` }}
                   >
-                    <motion.button
+                    <button
+                      type="button"
                       onClick={() => setActiveIndex(i)}
-                      animate={{
-                        scale: isActive ? 1.15 : 1,
-                        opacity: isActive ? 1 : 0.7,
-                      }}
-                      transition={{ duration: 0.3 }}
-                      className={`skill-badge ${isActive ? 'active' : ''}`}
-                      style={{
-                        transform: `rotate(-${angle}deg)`,
-                        fontSize: fontSize,
-                      }}
+                      className={`skill-badge ${isActive ? "active" : ""}`}
                       aria-label={`Select ${name}`}
                     >
                       {name}
-                    </motion.button>
+                    </button>
                   </div>
                 );
               })}
-            </motion.div>
+            </div>
           </div>
 
-          {/* Right Panel - Desktop & Tablet */}
           {!isMobile && (
             <motion.div
               key={`right-${activeIndex}`}
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5 }}
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.35 }}
               className="skillwheel-panel skillwheel-panel-right"
             >
               <h3 className="panel-title panel-title-alt">
                 Why I use {skill[activeIndex].name}
               </h3>
               <p className="description">
-                {skill[activeIndex].name} helps me build modern, fast, scalable UI 
+                {skill[activeIndex].name} helps me build modern, fast, scalable UI
                 experiences with excellent developer experience and performance.
               </p>
             </motion.div>
           )}
         </div>
 
-        {/* Mobile Card - Below Wheel */}
         {isMobile && (
           <motion.div
             key={`mobile-${activeIndex}`}
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.35 }}
             className="skillwheel-mobile-card"
           >
             <h4 className="mobile-title">{skill[activeIndex].name}</h4>
-            
             <div className="mobile-content">
               <div className="panel-row">
                 <span className="label">Experience:</span>
                 <span className="value">{skill[activeIndex].exp}</span>
               </div>
-              
               <p className="description">{skill[activeIndex].desc}</p>
-              
               <div className="panel-row">
                 <span className="label">Tools:</span>
                 <span className="value-muted">{skill[activeIndex].tools}</span>
@@ -173,14 +136,14 @@ export default function SkillWheel() {
           </motion.div>
         )}
 
-        {/* Progress Indicators */}
         <div className="skillwheel-progress">
-          {skill.map((_, i) => (
+          {skill.map((item, i) => (
             <button
-              key={i}
+              key={item.name}
+              type="button"
               onClick={() => setActiveIndex(i)}
-              className={`progress-dot ${i === activeIndex ? 'active' : ''}`}
-              aria-label={`View ${skill[i].name}`}
+              className={`progress-dot ${i === activeIndex ? "active" : ""}`}
+              aria-label={`View ${item.name}`}
             />
           ))}
         </div>

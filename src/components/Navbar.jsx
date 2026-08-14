@@ -169,8 +169,8 @@ export default function Navbar() {
           className={path === "/achievements" ? "active" : ""}
           to="/achievements"
         >
-          <span className="nav-icon">💼</span>
-          Experience
+          <span className="nav-icon">🏆</span>
+          Achievements
         </Link>
         <Link className={path === "/contact" ? "active" : ""} to="/contact">
           <span className="nav-icon">✉️</span>

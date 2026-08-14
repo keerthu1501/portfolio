@@ -11,6 +11,7 @@ const About = lazy(() => import("./pages/About"));
 const Projects = lazy(() => import("./pages/Projects"));
 const Contact = lazy(() => import("./pages/Contact"));
 const Experience = lazy(() => import("./pages/Experience"));
+const Achievements = lazy(() => import("./pages/Achievements"));
 
 
 export default function App() {
@@ -37,6 +38,7 @@ export default function App() {
           <Route path="/about" element={<About />} />
           <Route path="/experience" element={<Experience />} />
           <Route path="/projects" element={<Projects />} />
+          <Route path="/achievements" element={<Achievements />} />
           <Route path="/contact" element={<Contact />} />
         </Routes>
       </Suspense>

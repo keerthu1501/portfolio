@@ -6,9 +6,11 @@
 /* Section Container */
 .skillwheel-section {
   padding: 3rem 1rem;
-  min-height: 80vh;
+  min-height: auto;
   display: flex;
   align-items: center;
+  overflow-x: clip;
+  width: 100%;
 }
 
 .skillwheel-title {
@@ -113,6 +115,39 @@
   justify-content: center;
   align-items: center;
   flex-shrink: 0;
+  width: 180px;
+  height: 180px;
+  animation: wheel-spin 20s linear infinite;
+}
+
+@keyframes wheel-spin {
+  to { transform: rotate(360deg); }
+}
+
+.skill-orbit {
+  position: absolute;
+  transform-origin: center;
+  --dist: 70px;
+  transform: rotate(var(--angle, 0deg)) translate(var(--dist));
+}
+
+.skill-badge {
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  white-space: nowrap;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  text-align: center;
+  cursor: pointer;
+  border: none;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: #e5e7eb;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  display: inline-block;
+  font-size: 0.7rem;
+  transform: rotate(calc(var(--angle, 0deg) * -1));
 }
 
 .wheel-center-dot {
@@ -137,32 +172,8 @@
   }
 }
 
-/* Skill Badges */
-.skill-orbit {
-  position: absolute;
-  transform-origin: center;
-}
-
-.skill-badge {
-  padding: 0.5rem 0.75rem;
-  border-radius: 0.5rem;
-  font-weight: 600;
-  white-space: nowrap;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  text-align: center;
-  cursor: pointer;
-  border: none;
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  color: #e5e7eb;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  display: inline-block;
-}
-
 .skill-badge:hover {
   background: rgba(255, 255, 255, 0.15);
-  transform: scale(1.05);
 }
 
 .skill-badge.active {
@@ -275,6 +286,14 @@
   .skillwheel-center {
     padding: 1.75rem 1rem;
   }
+
+  .wheel-container {
+    width: 200px;
+    height: 200px;
+  }
+
+  .skill-orbit { --dist: 75px; }
+  .skill-badge { font-size: 0.75rem; }
 }
 
 /* Tablet (768px - 1023px) */
@@ -300,6 +319,14 @@
   .skillwheel-panel-right {
     justify-self: start;
   }
+
+  .wheel-container {
+    width: 220px;
+    height: 220px;
+  }
+
+  .skill-orbit { --dist: 85px; }
+  .skill-badge { font-size: 0.85rem; }
 }
 
 /* Desktop (1024px - 1279px) */
@@ -320,6 +347,14 @@
   .skillwheel-center {
     padding: 2.5rem;
   }
+
+  .wheel-container {
+    width: 240px;
+    height: 240px;
+  }
+
+  .skill-orbit { --dist: 95px; }
+  .skill-badge { font-size: 0.875rem; }
 }
 
 /* Large Desktop (1280px+) */
