@@ -1,8 +1,50 @@
 import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
 import resumeFile from "../common/assets/Keerthana_N_Resume-Developer.pdf";
 import education from "../data/education";
+import myPhoto from "../common/assets/my-photo.jpeg";
 
 export default function About() {
+  const [shielded, setShielded] = useState(false);
+
+  useEffect(() => {
+    const block = (event) => event.preventDefault();
+
+    const onKeyDown = (event) => {
+      const key = event.key.toLowerCase();
+      const blocked =
+        (event.ctrlKey || event.metaKey) && ["s", "p", "u"].includes(key);
+      if (blocked || key === "printscreen") {
+        event.preventDefault();
+        setShielded(true);
+        window.setTimeout(() => setShielded(false), 1200);
+      }
+    };
+
+    const shield = () => setShielded(true);
+    const unshield = () => setShielded(false);
+    const onVisibility = () => {
+      document.hidden ? shield() : unshield();
+    };
+
+    document.addEventListener("contextmenu", block);
+    document.addEventListener("dragstart", block);
+    document.addEventListener("copy", block);
+    document.addEventListener("keydown", onKeyDown);
+    window.addEventListener("blur", shield);
+    window.addEventListener("focus", unshield);
+    document.addEventListener("visibilitychange", onVisibility);
+
+    return () => {
+      document.removeEventListener("contextmenu", block);
+      document.removeEventListener("dragstart", block);
+      document.removeEventListener("copy", block);
+      document.removeEventListener("keydown", onKeyDown);
+      window.removeEventListener("blur", shield);
+      window.removeEventListener("focus", unshield);
+      document.removeEventListener("visibilitychange", onVisibility);
+    };
+  }, []);
   const skillGroups = [
     {
       title: "React & Web",
@@ -85,58 +127,32 @@ export default function About() {
       margin: "0 auto",
       minHeight: "100vh"
     }}>
-      {/* Hero Section */}
-      {/* <motion.div
+      {/* Hero with protected photo */}
+      <motion.div
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
         style={{
           textAlign: "center",
-          marginBottom: "4rem"
+          marginBottom: "3rem",
+          userSelect: "none",
         }}
+        onContextMenu={(e) => e.preventDefault()}
       >
-        <motion.div
-          initial={{ scale: 0 }}
-          animate={{ scale: 1 }}
-          transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
-          style={{
-            display: "inline-block",
-            marginBottom: "2rem"
-          }}
-        >
-          <div style={{
-            width: "180px",
-            height: "180px",
-            borderRadius: "50%",
-            background: "linear-gradient(135deg, #22d3ee 0%, #a855f7 100%)",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            fontSize: "5rem",
-            boxShadow: "0 20px 60px rgba(168, 85, 247, 0.4)",
-            position: "relative",
-            overflow: "hidden"
-          }}>
-            <motion.div
-              animate={{
-                rotate: [0, 360]
-              }}
-              transition={{
-                duration: 20,
-                repeat: Infinity,
-                ease: "linear"
-              }}
-              style={{
-                position: "absolute",
-                width: "100%",
-                height: "100%",
-                background: "conic-gradient(from 0deg, transparent, rgba(255,255,255,0.3), transparent)",
-                pointerEvents: "none"
-              }}
-            />
-            👩‍💻
+        <div className="about-photo-wrap">
+          <div
+            className="about-photo"
+            style={{ backgroundImage: `url(${myPhoto})` }}
+            role="img"
+            aria-label="Keerthana"
+          />
+          <div className="about-photo-watermark" aria-hidden="true">
+            {Array.from({ length: 12 }).map((_, i) => (
+              <span key={i}>Keerthana N · View Only</span>
+            ))}
           </div>
-        </motion.div>
+          <div className="about-photo-shield" />
+        </div>
 
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
@@ -144,43 +160,37 @@ export default function About() {
           transition={{ delay: 0.3 }}
           className="neon-text"
           style={{
-            fontSize: "clamp(2.5rem, 6vw, 4rem)",
-            marginBottom: "1rem",
+            fontSize: "clamp(2rem, 6vw, 3.2rem)",
+            margin: "1.1rem 0 0.5rem",
             lineHeight: 1.2
           }}
         >
-          Hi, I'm Keerthana 👋
+          Hi, I'm Keerthana
         </motion.h1>
 
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.4 }}
-          style={{
-            fontSize: "clamp(1.25rem, 3vw, 1.5rem)",
-            color: "#22d3ee",
-            fontWeight: 600,
-            marginBottom: "1rem"
-          }}
-        >
+        <p style={{
+          fontSize: "clamp(1.05rem, 3vw, 1.35rem)",
+          color: "#22d3ee",
+          fontWeight: 600,
+          marginBottom: "0.5rem"
+        }}>
           React.js Developer & UI/UX Designer
-        </motion.p>
+        </p>
 
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.5 }}
-          style={{
-            color: "#d1d5db",
-            fontSize: "1.0625rem",
-            maxWidth: "700px",
-            margin: "0 auto",
-            lineHeight: 1.6
-          }}
-        >
+        <p style={{
+          color: "#d1d5db",
+          fontSize: "1rem"
+        }}>
           📍 Based in Chennai | 🌏 Tamil, English
-        </motion.p>
-      </motion.div> */}
+        </p>
+        <p className="about-photo-note">View only · download disabled</p>
+      </motion.div>
+
+      {shielded && (
+        <div className="about-privacy-shield">
+          <p>Protected view</p>
+        </div>
+      )}
 
       {/* Main Content Grid */}
       <div style={{
@@ -814,6 +824,78 @@ export default function About() {
       </motion.div>
 
       <style>{`
+        .about-photo-wrap {
+          position: relative;
+          width: min(180px, 42vw);
+          aspect-ratio: 1;
+          margin: 0 auto 0.35rem;
+          border-radius: 50%;
+          overflow: hidden;
+          border: 3px solid rgba(168, 85, 247, 0.45);
+          box-shadow: 0 12px 40px rgba(168, 85, 247, 0.28);
+          user-select: none;
+          -webkit-user-select: none;
+          -webkit-touch-callout: none;
+        }
+
+        .about-photo {
+          position: absolute;
+          inset: 0;
+          background-size: cover;
+          background-position: center 18%;
+          pointer-events: none;
+        }
+
+        .about-photo-watermark {
+          position: absolute;
+          inset: -40%;
+          z-index: 2;
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          gap: 1.2rem 0.8rem;
+          transform: rotate(-24deg);
+          opacity: 0.18;
+          pointer-events: none;
+          color: #fff;
+          font-size: 0.58rem;
+          font-weight: 800;
+          letter-spacing: 0.6px;
+          text-transform: uppercase;
+        }
+
+        .about-photo-shield {
+          position: absolute;
+          inset: 0;
+          z-index: 3;
+          background: transparent;
+        }
+
+        .about-photo-note {
+          margin-top: 0.65rem;
+          color: #9ca3af;
+          font-size: 0.75rem;
+        }
+
+        .about-privacy-shield {
+          position: fixed;
+          inset: 0;
+          z-index: 4000;
+          background: #080f1f;
+          display: grid;
+          place-items: center;
+          color: #a855f7;
+          font-weight: 700;
+          letter-spacing: 2px;
+          text-transform: uppercase;
+        }
+
+        @media print {
+          .about-photo-wrap,
+          .about-privacy-shield {
+            display: none !important;
+          }
+        }
+
         @media (max-width: 1024px) {
           main > div:first-of-type {
             grid-template-columns: 1fr !important;

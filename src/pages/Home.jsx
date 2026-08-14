@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Hero from "../components/Hero";
 import SkillWheel from "../components/SkillWheel";
-// import myImage from "../common/assets/my-photo.jpg";
+import myImage from "../common/assets/my-photo.jpeg";
 import projects from "../data/projects";
 import "../common/css/home.css";
 
@@ -22,12 +22,6 @@ const STATS = [
   },
 ];
 
-const PROJECT_ACCENTS = [
-  { emoji: "🚀", gradient: "linear-gradient(135deg, #22d3ee, #0ea5e9)" },
-  { emoji: "💻", gradient: "linear-gradient(135deg, #a855f7, #ec4899)" },
-  { emoji: "🎨", gradient: "linear-gradient(135deg, #10b981, #22d3ee)" },
-];
-
 const fadeUp = {
   initial: { opacity: 0, y: 24 },
   whileInView: { opacity: 1, y: 0 },
@@ -40,7 +34,7 @@ function useDesktopHover() {
 
   useEffect(() => {
     const media = window.matchMedia(
-      "(min-width: 992px) and (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)"
+      "(min-width: 992px) and (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)",
     );
     const update = () => setEnabled(media.matches);
     update();
@@ -93,9 +87,18 @@ export default function Home() {
   return (
     <div className="home-page">
       <div className="cosmic-background" aria-hidden="true">
-        <motion.div className="gradient-orb orb-1" style={{ x: mouseX, y: mouseY }} />
-        <motion.div className="gradient-orb orb-2" style={{ x: orb2X, y: orb2Y }} />
-        <motion.div className="gradient-orb orb-3" style={{ x: orb3X, y: orb3Y }} />
+        <motion.div
+          className="gradient-orb orb-1"
+          style={{ x: mouseX, y: mouseY }}
+        />
+        <motion.div
+          className="gradient-orb orb-2"
+          style={{ x: orb2X, y: orb2Y }}
+        />
+        <motion.div
+          className="gradient-orb orb-3"
+          style={{ x: orb3X, y: orb3Y }}
+        />
       </div>
       <div className="mesh-gradient" aria-hidden="true" />
       <div className="particles-container" aria-hidden="true">
@@ -111,12 +114,16 @@ export default function Home() {
           <motion.div {...fadeUp} className="profile-container">
             <motion.div
               className="profile-card"
-              style={desktopHover ? { rotateY: cardRotateY, rotateX: cardRotateX } : undefined}
+              style={
+                desktopHover
+                  ? { rotateY: cardRotateY, rotateX: cardRotateX }
+                  : undefined
+              }
             >
               <div className="holographic-bg" />
               <div className="profile-image-container">
                 <img
-                  // src={myImage}
+                  src={myImage}
                   alt="Keerthana"
                   className="profile-photo"
                   width="220"
@@ -128,10 +135,10 @@ export default function Home() {
                 <div className="orbit-ring ring-b" />
               </div>
 
-              <div className="info-badge">
+              {/* <div className="info-badge">
                 <span className="status-dot" />
                 <span>Available for Projects</span>
-              </div>
+              </div> */}
 
               <div className="card-footer">
                 <span className="skill-badge">⚡ React Expert</span>
@@ -154,19 +161,22 @@ export default function Home() {
 
             <div className="description">
               <p>
-                Hi! I'm <span className="highlight-cyan">Keerthana</span>, a passionate
-                Software developer and UI/UX designer with over{" "}
-                <span className="highlight-purple">1 year</span> of experience building
-                modern web applications. I specialize in React.js and love creating
-                beautiful, intuitive user interfaces that provide excellent user
-                experiences.
+                Hi! I'm <span className="highlight-cyan">Keerthana</span>, a
+                passionate Software developer and UI/UX designer with over{" "}
+                <span className="highlight-purple">1 year</span> of experience
+                building modern web applications. I specialize in React.js and
+                love creating beautiful, intuitive user interfaces that provide
+                excellent user experiences.
               </p>
             </div>
 
             <div className="stats-grid">
               {STATS.map((stat) => (
                 <div key={stat.label} className="stat-card-3d">
-                  <div className="stat-gradient-overlay" style={{ background: stat.gradient }} />
+                  <div
+                    className="stat-gradient-overlay"
+                    style={{ background: stat.gradient }}
+                  />
                   <div className="stat-content">
                     <div className="stat-icon">{stat.icon}</div>
                     <div className="stat-number">{stat.number}</div>
@@ -208,7 +218,6 @@ export default function Home() {
 
         <div className="projects-grid">
           {projects.map((project, index) => {
-            const accent = PROJECT_ACCENTS[index % PROJECT_ACCENTS.length];
             return (
               <motion.article
                 key={project.id}
@@ -217,16 +226,12 @@ export default function Home() {
                 transition={{ ...fadeUp.transition, delay: index * 0.08 }}
                 onClick={() => navigate("/projects")}
               >
-                <div
-                  className="project-bg-image"
-                  style={{ backgroundImage: `url(${project.image})` }}
-                />
-                <div
-                  className="project-gradient-overlay"
-                  style={{ background: accent.gradient }}
-                />
                 <div className="project-icon-container">
-                  <span className="project-emoji">{accent.emoji}</span>
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="project-thumb"
+                  />
                 </div>
                 <div className="project-content">
                   <h3 className="project-title">{project.title}</h3>
