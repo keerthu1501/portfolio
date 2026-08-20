@@ -174,7 +174,7 @@ export default function About() {
           fontWeight: 600,
           marginBottom: "0.5rem"
         }}>
-          React.js Developer & UI/UX Designer
+          React Mobile App Developer
         </p>
 
         <p style={{
@@ -229,7 +229,7 @@ export default function About() {
             lineHeight: 1.8,
             marginBottom: "1.5rem"
           }}>
-            React.js Developer, UI/UX Designer, and technology enthusiast with over <strong style={{ color: "#22d3ee" }}>1 year of professional experience</strong> building interactive web and mobile applications. Passionate about responsive design, performance optimization, and crafting user-centric experiences.
+            React Developer, and technology enthusiast with over <strong style={{ color: "#22d3ee" }}>1 year of professional experience</strong> building interactive web and mobile applications. Passionate about responsive design, performance optimization, and crafting user-centric experiences.
           </p>
           
           <p style={{

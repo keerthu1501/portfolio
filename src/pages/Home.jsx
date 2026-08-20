@@ -141,8 +141,8 @@ export default function Home() {
               </div> */}
 
               <div className="card-footer">
-                <span className="skill-badge">⚡ React Expert</span>
-                <span className="skill-badge">🎨 UI/UX Master</span>
+                <span className="skill-badge">⚡ React Developera</span>
+                {/* <span className="skill-badge">🎨 UI/UX Master</span> */}
               </div>
             </motion.div>
           </motion.div>
@@ -162,9 +162,9 @@ export default function Home() {
             <div className="description">
               <p>
                 Hi! I'm <span className="highlight-cyan">Keerthana</span>, a
-                passionate Software developer and UI/UX designer with over{" "}
+                passionate Software developer  with over{" "}
                 <span className="highlight-purple">1 year</span> of experience
-                building modern web applications. I specialize in React.js and
+                building modern web applications. I specialize in React Native | React.js and
                 love creating beautiful, intuitive user interfaces that provide
                 excellent user experiences.
               </p>
