@@ -123,7 +123,7 @@ export default function Home() {
               <div className="holographic-bg" />
               <div className="profile-image-container">
                 <img
-                  src={myImage}
+                  // src={myImage}
                   alt="Keerthana"
                   className="profile-photo"
                   width="220"
