@@ -1,3 +1,5 @@
+import reviewCountsJson from "./reviews.json";
+
 export const RATING_LABELS = {
   1: { label: "Bad", hint: "Needs work", color: "#f87171" },
   2: { label: "Not good", hint: "Below average", color: "#fb923c" },
@@ -16,15 +18,15 @@ const LEGACY_KEYS = [
 ];
 
 export const DEFAULT_COUNTS = {
-  1: 0,
-  2: 0,
-  3: 0,
-  4: 0,
-  5: 0,
+  1: Number(reviewCountsJson[1]) || 0,
+  2: Number(reviewCountsJson[2]) || 0,
+  3: Number(reviewCountsJson[3]) || 0,
+  4: Number(reviewCountsJson[4]) || 0,
+  5: Number(reviewCountsJson[5]) || 0,
 };
 
 function emptyCounts() {
-  return { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0 };
+  return { ...DEFAULT_COUNTS };
 }
 
 function clearLegacyStorage() {
