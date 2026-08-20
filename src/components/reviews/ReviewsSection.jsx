@@ -97,7 +97,7 @@ export default function ReviewsSection() {
             </p>
           ) : (
             <p className="review-status">
-              No comments — just a star. You can post only once.
+             Give me your star rating
             </p>
           )}
 
