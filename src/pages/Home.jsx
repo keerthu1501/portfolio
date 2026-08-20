@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Hero from "../components/Hero";
 import SkillWheel from "../components/SkillWheel";
+import ReviewsSection from "../components/reviews/ReviewsSection";
 import myImage from "../common/assets/my-photo.jpeg";
 import projects from "../data/projects";
 import "../common/css/home.css";
@@ -141,7 +142,7 @@ export default function Home() {
               </div> */}
 
               <div className="card-footer">
-                <span className="skill-badge">⚡ React Developera</span>
+                <span className="skill-badge">⚡ React Developer</span>
                 {/* <span className="skill-badge">🎨 UI/UX Master</span> */}
               </div>
             </motion.div>
@@ -263,6 +264,8 @@ export default function Home() {
           </motion.button>
         </div>
       </section>
+
+      <ReviewsSection />
     </div>
   );
 }
