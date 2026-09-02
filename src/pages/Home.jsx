@@ -218,13 +218,21 @@ export default function Home() {
 
         <div className="projects-grid">
           {projects.map((project, index) => {
+            const openProject = () => {
+              if (project.live) {
+                window.open(project.live, "_blank", "noopener,noreferrer");
+                return;
+              }
+              navigate("/projects");
+            };
+
             return (
               <motion.article
                 key={project.id}
                 className="project-card-modern"
                 {...fadeUp}
                 transition={{ ...fadeUp.transition, delay: index * 0.08 }}
-                onClick={() => navigate("/projects")}
+                onClick={openProject}
               >
                 <div className="project-icon-container">
                   <img
@@ -244,7 +252,7 @@ export default function Home() {
                     ))}
                   </div>
                   <button type="button" className="project-button">
-                    View Project →
+                    {project.live ? "Visit Live Site →" : "View Project →"}
                   </button>
                 </div>
               </motion.article>

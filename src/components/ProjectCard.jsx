@@ -1,17 +1,24 @@
 import { motion } from "framer-motion";
 
 export default function ProjectCard({ project, index }) {
+  const openLiveSite = () => {
+    if (!project.live) return;
+    window.open(project.live, "_blank", "noopener,noreferrer");
+  };
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: index * 0.1, duration: 0.5 }}
       className="glass project-card"
+      onClick={openLiveSite}
+      role={project.live ? "link" : undefined}
       style={{
         padding: "1.5rem",
         borderRadius: "1rem",
         transition: "all 0.3s ease",
-        cursor: "pointer",
+        cursor: project.live ? "pointer" : "default",
         height: "100%",
         display: "flex",
         flexDirection: "column"
@@ -80,6 +87,7 @@ export default function ProjectCard({ project, index }) {
             href={project.github} 
             target="_blank" 
             rel="noopener noreferrer"
+            onClick={(event) => event.stopPropagation()}
             style={{ fontSize: "0.875rem" }}
           >
             GitHub →
@@ -90,6 +98,7 @@ export default function ProjectCard({ project, index }) {
             href={project.live} 
             target="_blank" 
             rel="noopener noreferrer"
+            onClick={(event) => event.stopPropagation()}
             style={{ fontSize: "0.875rem" }}
           >
             Live Demo →

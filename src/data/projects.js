@@ -6,29 +6,17 @@ import pro3 from "../common/assets/pro3.jpg";
 const projects = [
   {
     id: 1,
-    title: "E-Commerce Website Development",
+    title: "Trolly - Electronics Store",
     description:
-      "End-to-end e-commerce website development with modern UI/UX, integrated CMS platforms, and mobile app support. Built stores using React.js, Shopify, WordPress, and custom PHP functionalities. Also developed mobile-friendly versions using React Native and Expo.",
-    tech: ["React.js", "Shopify / WordPress (CMS)", "PHP", "React Native", "Expo"],
-    // github: "https://github.com/yourusername/ecommerce",
-    // live: "https://ecommerce-demo.vercel.app",
-    image: pro2, // Image imported above
+      "Electronics shopping e-commerce shop with a Vite + React.js user site and a Python admin panel. Superadmin can add multiple admins to manage the store, products, and orders.",
+    tech: ["Vite", "React.js", "Python", "Admin Panel"],
+    live: "https://trollyecommerce.vercel.app/",
+    image: pro2,
   },
 
   {
     id: 2,
-    title: "Employee Management Custom Software",
-    description:
-      "A complete employee management system with attendance tracking, role-based login, admin dashboard, and API-based data handling. Designed UI in Figma and developed using React.js and Node.js with streamlined workflows.",
-    tech: ["React.js", "Node.js", "REST API", "Bootstrap", "Figma", "GitHub"],
-    // github: "https://github.com/yourusername/employee-management",
-    // live: "https://employee-demo.vercel.app",
-    image: pro1, // Image imported above
-  },
-
-  {
-    id: 3,
-    title: "Personal Portfolio Website",
+        title: "Personal Portfolio Website",
     description:
       "A modern and responsive personal portfolio built using React.js with Tailwind CSS and Bootstrap for styling. Features project showcases, animations, and a clean professional layout.",
     tech: ["React.js", "Tailwind CSS", "Bootstrap", "Firebase"],
