@@ -16,7 +16,7 @@ const projects = [
 
   {
     id: 2,
-        title: "Personal Portfolio Website",
+    title: "Personal Portfolio Website",
     description:
       "A modern and responsive personal portfolio built using React.js with Tailwind CSS and Bootstrap for styling. Features project showcases, animations, and a clean professional layout.",
     tech: ["React.js", "Tailwind CSS", "Bootstrap", "Firebase"],
